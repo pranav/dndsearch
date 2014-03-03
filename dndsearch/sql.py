@@ -10,7 +10,8 @@ MYSQL_HOST = 'localhost'
 MYSQL_DB = 'dnd'
 
 engine = sqlalchemy.create_engine("mysql://%s:%s@%s/%s" % (
-    MYSQL_USER, MYSQL_PASS, MYSQL_HOST, MYSQL_DB))
+    MYSQL_USER, MYSQL_PASS, MYSQL_HOST, MYSQL_DB),
+    pool_size=6, pool_recycle=600)
 
 Session = sessionmaker(bind=engine)
 Base = declarative_base()
