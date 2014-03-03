@@ -16,3 +16,7 @@ body {
 thead {
     font-weight: bold;
 }
+
+table {
+    text-align: left;
+}
