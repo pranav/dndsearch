@@ -6,14 +6,11 @@ body {
     font-family: 'Lato', Arial, sans-serif;
 }
 
-#main {
-    float: none;
-    margin: 10% auto 0 auto;
-}
 
-#results {
+.col-md-8 {
     float: none;
     margin: 0 auto;
+    text-align: center;
 }
 
 thead {
