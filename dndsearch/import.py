@@ -6,6 +6,7 @@ from sql import Page
 
 def getPageContents(page, pdf):
     return pdf.getPage(page).extractText()
+    
 if __name__ == '__main__':
     pdf = pyPdf.PdfFileReader(file(sys.argv[2], 'rb'))
     page_count = pdf.getNumPages()
