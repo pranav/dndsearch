@@ -1,37 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='dndSearchApp'>
     <head>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
         <!-- Latest compiled and minified JavaScript -->
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
         <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,700italic' rel='stylesheet' type='text/css'>
         <script src="{{ url_for('static', filename='dndsearch.js') }}"></script>
     </head>
-    <body>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <h1>DnD Search</h1>
-                    <p>Find the page in the DnD manuals.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8" id='main'>
-                    <form class="form-horizontal text-center" role="form">
-                        <div class="form-group">
-                          <div class="col-md-12 text-center">
-                            <input type="text" class="form-control input-lg" id="search" placeholder="Search...">
-                          </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8" id='results'></div>
-            </div>
+    <body ng-controller="MainCtrl">
+      {% raw %}
+      <div class="container">
+        <div class='row'>
+          <div class="col-md-8">
+            <form ng-submit="submit_query(query)">
+              <input type="text" class="form-control" ng-model="query" placeholder='Enter query'>
+            </form>
+          </div>
         </div>
+        <div class="row">
+          <div class="col-md-8">
+            <table ng-if="results.length > 0" class="table table-condensed">
+              <thead>
+                <tr><th>Book</th><th>Page</th></tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="r in results"><td>{{ r.book }}</td><td>{{ r.page }}</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      {% endraw %}
     </body>
 </html>
