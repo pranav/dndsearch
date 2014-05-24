@@ -44,7 +44,7 @@ class Page(Base):
             q = session.query(Page).from_statement(
                 "SELECT book, page FROM page \
                 WHERE match (text) \
-                AGAINST (\"%s\" in natural language mode)" % query)
+                AGAINST (\"%s\")" % query)
             return [(p[0], p[1]) for p in q.values('book', 'page')]
         finally:
             session.close()
