@@ -10,6 +10,7 @@ setup(
     install_requires=[
         'pyPdf',
         'sqlalchemy',
-        'MySQL-python'
+        'MySQL-python',
+        'Flask'
     ]
 )
