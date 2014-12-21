@@ -1,3 +1,1 @@
-pyPdf
-sqlalchemy
-mysql-python
+-e .
