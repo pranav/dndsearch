@@ -1,4 +1,4 @@
-import sys
+import os
 import json
 from flask import Flask, render_template
 from sql import Page
@@ -18,7 +18,7 @@ def render_home():
 if __name__ == '__main__':
     app.debug = False
     try:
-        PORT = int(sys.argv[1])
+        PORT = int(os.getenv('PORT'))
     except IndexError:
         PORT = 80
     app.run(host='0.0.0.0', port=PORT)
