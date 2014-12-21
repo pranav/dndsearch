@@ -1,5 +1,6 @@
+import sys
 import json
-from flask import Flask, abort, Response, render_template
+from flask import Flask, render_template
 from sql import Page
 app = Flask(__name__)
 
@@ -15,5 +16,9 @@ def render_home():
 
 
 if __name__ == '__main__':
-    app.debug = True
-    app.run(host='0.0.0.0')
+    app.debug = False
+    try:
+        PORT = int(sys.argv[1])
+    except IndexError:
+        PORT = 80
+    app.run(host='0.0.0.0', port=PORT)
